@@ -12,14 +12,17 @@ contract Faucet {
     mapping(address=>uint8) public atribuicoes;
     uint8 valorASerAtribuido;
 
+    event AconteceuUmaAtribuicao(address paraQuem, uint8 quanto);
+
     // @notice Fornece a quem chamar a transacao um valor
     // @dev incrementa um no acumulador e atribuir o valor do acumulador a um endereco ethereum.
     // @return valor atual do acumulador
     function atribuirValor() public returns (uint256) {
-        require(atribuicoes[msg.sender] > 0, "Sinto muito. Voce ja teve sua chance");
+        require(atribuicoes[msg.sender]==0, "Sinto muito. Voce ja teve sua chance");
         require(valorASerAtribuido < 256, "Sinto muito. Voce perdeu sua chance");
         valorASerAtribuido++;
         atribuicoes[msg.sender] = valorASerAtribuido;
+        emit AconteceuUmaAtribuicao(msg.sender, valorASerAtribuido);
         return valorASerAtribuido;
     }
 
