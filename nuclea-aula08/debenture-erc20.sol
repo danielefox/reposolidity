@@ -6,7 +6,7 @@ pragma solidity 0.8.19;
  * @dev Operacoes de uma debenture
  * @author Daniele Raposo
  */
- // Endereco do contrato na rede Sepolia: 
+ // Endereco do contrato na rede Sepolia: 0xa56623606cd5f658e773665123d8541100eefb20
 
 /**
  * @dev Interface of the ERC20 standard as defined in the EIP.
@@ -137,7 +137,6 @@ contract Ownable {
     uint256 _prazoPagamento;
     uint16 _fracoes;
     string public rating;
-
     string private myName;
     string private mySymbol;
     uint256 private myTotalSupply;
@@ -167,7 +166,6 @@ contract Ownable {
     constructor(string memory emissor_) {
         myName = "Token Nuclea Series 01 2024";
         mySymbol = "NC012024";
-        decimals = 2;
         mint(msg.sender, (1000000000 * (10 ** decimals)));
         _emissor = emissor_;
         _dataEmissao = block.timestamp;
